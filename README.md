@@ -65,7 +65,7 @@ Let's compile a list of the parts I used.
         Qty
       </th>
       <th>
-        Notes
+        Image
       </th>
     </tr>
   </thead>
@@ -126,7 +126,7 @@ Let's compile a list of the parts I used.
         Qty
       </th>
       <th>
-        Notes
+        Image
       </th>
     </tr>
   </thead>
@@ -153,7 +153,7 @@ Let's compile a list of the parts I used.
     </tr>
   </tbody>
 </table>
-<p><sup>2</sup> For PCA9685 is required an external power supply, and the one I used has the male connector with 2.5mm x 5.5mm. Make sure you get a female connector of the right size. <strong><u>Do not use USB ports to power the PCA9685 board</u></strong>.</p>
+<p><sup>2</sup> For the PCA9685 is required an external power supply, and the one I used has the male connector with 2.5mm x 5.5mm. Make sure you get a female connector of the right size. <strong><u>Do not use USB ports to power the PCA9685 board</u></strong>.</p>
 
 ## The wiring
 
