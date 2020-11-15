@@ -106,7 +106,7 @@ Let's compile a list of the parts I used.
       <td><img src="images.md/MG996R-s.jpg" alt="MG996R Servo Motor" /></td>
     </tr>
     <tr>
-      <td><a href="">25kg digital servo motor high torque</a></td>
+      <td>25kg digital servo motor high torque</td>
       <td>1</td>
       <td><img src="images.md/25kg_digital_servo_high_torque.jpg" alt="25kg torque servo motor" /></td>
     </tr>
