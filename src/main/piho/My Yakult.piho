@@ -1,0 +1,21 @@
+# My Yacult
+# Author: Gabriele Tafuro
+# Date: 1 November 2020
+# Grabs a Yakult jar and moves it on right hand site.
+# This does not want to be some kind of advertisement, it was the first thing I tried to lift with the robotic arm!
+
+# Open clamp
+CO
+# Move wrist
+WR-90
+SV
+SH
+SV90
+EV
+WV45
+CS70
+WV
+SH45
+WV45
+CO
+SV0
