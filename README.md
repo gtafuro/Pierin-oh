@@ -4,6 +4,8 @@
 
 Pierin-oh! is a desktop application for manoeuvring a robotic arm with six degrees of freedom (6DOF).
 
+![The robotic arm - Picture 1](images.md/arm-1.jpg)
+
 The arm's joints (shoulder, elbow, wrist and clamp) can be moved through:
 
 * sliders and buttons present in the GUI;
@@ -34,13 +36,15 @@ The main steps to be quickly up and running are:
 * download the latest [Java JDK](https://www.oracle.com/java/technologies/javase-downloads.html). I used version 13.
 * use [Maven](https://maven.apache.org/) or your preferred IDE for compiling the Java code in the /src/main/java folder. I use [Apache NetBeans](https://netbeans.org/).
 
+<img align="right" width="297" height="528" src="images.md/arm-2.jpg" />
+
 If all the above has been done, now we should have:
 
 * a robotic arm assembled with its servo-motors, mounted and lots of wiring, coming from the servos, that goes to the PCA9685 shield. I strongly recommend not to leave the wires loose but to use some cable ties for grouping and fixing wires along the arm, testing and making sure that all of them are long enough when the arm stretches, bends or rotates and that they won't be cut by the joints when they make acute angles (like scissors). You want to use some [servo motor cable extensions](https://www.amazon.com/s?k=servo+cable+extension) too. On this subject, spiral tubes would be a nifty solution, but I did not try them yet;
 * on its turn, the PCA9685 shield connected to the Arduino Nano;
 * the microcontroller already programmed and attached to your PC through one of the available USB ports;
 * the PCA9685 shield powered by an external 5V power supply with, at least, 2.5A: do not even think of using the power coming from a USB port of the PC to power-up the shield!
-
+</p>
 Now you should be ready and start the Pierin-oo! program. Once running, you should see a graphical user interface with tabs. In the second one, there is the default configuration for the serial port. And, if already detected, you should see the serial port name where the arm is connected to. If not, attach the arm (the Arduino Nano) to one of the USB ports and press the refresh button. Chances are it's the only serial port connected to your PC if not, select the correct one from the "Port name" combo-box. Stand clear from the reaches of the arm, including your PC, monitor and anything else that could be damaged by an unexpected and wildly fast movement of the arm and hit Connect.
 
 Enjoy!
@@ -227,4 +231,4 @@ The robotic arm on receiving the commands returns an acknowledgement with the sa
 
 ## Instructions manual
 
-Yet to be done. 
+Yet to be done.
