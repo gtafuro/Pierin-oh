@@ -45,7 +45,7 @@ If all the above has been done, now we should have:
 * the microcontroller already programmed and attached to your PC through one of the available USB ports;
 * the PCA9685 shield powered by an external 5V power supply with, at least, 2.5A: do not even think of using the power coming from a USB port of the PC to power-up the shield!
 </p>
-Now you should be ready and start the Pierin-oo! program. Once running, you should see a graphical user interface with tabs. In the second one, there is the default configuration for the serial port. And, if already detected, you should see the serial port name where the arm is connected to. If not, attach the arm (the Arduino Nano) to one of the USB ports and press the refresh button. Chances are it's the only serial port connected to your PC if not, select the correct one from the "Port name" combo-box. Stand clear from the reaches of the arm, including your PC, monitor and anything else that could be damaged by an unexpected and wildly fast movement of the arm and hit Connect.
+Now you should be ready and start the Pierin-oh! program. Once running, you should see a graphical user interface with tabs. In the second one, there is the default configuration for the serial port. And, if already detected, you should see the serial port name where the arm is connected to. If not, attach the arm (the Arduino Nano) to one of the USB ports and press the refresh button. Chances are it's the only serial port connected to your PC if not, select the correct one from the "Port name" combo-box. Stand clear from the reaches of the arm, including your PC, monitor and anything else that could be damaged by an unexpected and wildly fast movement of the arm and hit Connect.
 
 Enjoy!
 
