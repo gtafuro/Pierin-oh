@@ -60,17 +60,6 @@ public interface SixDOFArmControllerInterface {
    *        A reference to a {@code SixDOFArmControllerUI} user interface.
    */
   public void setUI(SixDOFArmControllerUI ui);
-
-  /**
-   * Notifies that the pointing device (mouse) has moved.
-   * Eventually, this method should comprise all devices that are used to move
-   * the pointer.
-   * 
-   * @param evt
-   *        a {@code PointDevice} event
-   */
-  @Deprecated
-  public void pointerDeviceHasMoved(PointerDevice evt);
   
   /**
    *  Gets the used serial port name.
@@ -95,48 +84,6 @@ public interface SixDOFArmControllerInterface {
    * @return {@code true} if connected, {@code false} otherwise.
    */
   public boolean isArmConnected();
-  
-  /**
-   * Moves the robotic arm to the left hand side, horizontally to the ground.
-   */
-  @Deprecated
-  public void moveLeft();
-  
-  /**
-   * Moves the robotic arm to the right hand side, parallel to the ground.
-   */
-  @Deprecated
-  public void moveRight();
-
-  /**
-   * Moves the robotic arm up, facing the front.
-   */
-  @Deprecated
-  public void moveUp();
-
-  /**
-   * Moves the robotic arm down, facing the front.
-   */
-  @Deprecated
-  public void moveDown();
-  
-  /**
-   * Moves the robotic arm to the front, parallel to the ground.
-   */
-  @Deprecated
-  public void moveToFront();
-
-  /**
-   * Arbitrarily robotic moves the arm at {@code x} degrees horizontally and {@code y}
-   * degrees vertically.
-   * 
-   * @param x
-   *        the horizontal degrees where to move (from 0 to 180).
-   * @param y 
-   *        the vertical degrees where to move (from 0 to 180).
-   */
-  @Deprecated
-  public void moveTo(int x, int y);
   
   /**
    * Moves the robotic arm to the off position.

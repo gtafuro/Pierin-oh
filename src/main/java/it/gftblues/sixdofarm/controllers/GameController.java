@@ -67,14 +67,14 @@ public class GameController {
   private Map<String, Controller> controllers;
   private String lastControllerName;
   private final List<GameControllerListener> listeners;
-  private boolean[] elements;
-  static final long HEARTBEATMS = 100;
+//  private boolean[] elements;
+//  static final long HEARTBEATMS = 100;
   
   private Map<String, Hatswitch> hatswitchBehaviours;
   
-  private float xAxisPercentage = 0;
-  private float yAxisPercentage = 0;
-  private float hatSwitchPosition = 0;
+//  private float xAxisPercentage = 0;
+//  private float yAxisPercentage = 0;
+//  private float hatSwitchPosition = 0;
 
   public GameController() {
     loadLibraries();
@@ -267,7 +267,7 @@ public class GameController {
         }
 /******************************************************************************/        
         
-        Component[] components = v.getComponents();
+/*GFT        Component[] components = v.getComponents();
         if ( components != null && components.length > 0) {
           elements = new boolean[components.length];
           for(int i = 0; i < elements.length; i++) {
@@ -326,7 +326,7 @@ public class GameController {
 //              axisValueInPercentage;
             }
           }
-        }
+        }*/
       }
     });
   }

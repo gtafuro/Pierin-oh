@@ -77,6 +77,11 @@ public class SixDOFArmController
   private static final String APPLICATION_NAME = "Pierin-oh";
 
   /**
+   * Log file
+   */
+  private static final String LOG_FILE = "Pierin-oh.log";
+
+  /**
    * Line feed.
    */
   private static final String LF = "\n";
@@ -236,7 +241,7 @@ public class SixDOFArmController
   private void setLogger() {
     String path = config.getLogFilePathname();
     if (path == null) {
-      path = System.getProperty("user.home")+File.separator+"Pierin-oh.log";
+      path = System.getProperty("user.home")+File.separator+LOG_FILE;
       config.setLogFilePathname(path);
       ui.setLogFilePathname(path);
     }
@@ -278,21 +283,6 @@ public class SixDOFArmController
     checkCommand(command);
     dispatcher.addCommand(command);
 //    comm.writeToPort(command);
-  }
-
-  /**
-   * Sends a command to the arm (serial port)
-   * .
-   * @param command
-   *        An {@code int} with the single character command to be sent to the 
-   *        arm.
-   */
-  @Deprecated
-  public void sendToPort(int command) {
-    String sCommand = ""+(char)command;
-    checkCommand(sCommand);
-    dispatcher.addCommand(""+sCommand);
-//      comm.writeToPort(command);
   }
 
   /**
@@ -363,42 +353,6 @@ public class SixDOFArmController
               .toArray(String[]::new)
     );
   }
-
-  @Deprecated
-  @Override
-  public void pointerDeviceHasMoved(PointerDevice pd) {                                  
-    int x = pd.getX();
-    int y = pd.getY();
-    int[] buttons = pd.getButtons();
-    /*
-     * If the pointer device is not in the previous position and the 2nd button
-     * is not pressed
-     */
-    if (
-            (x != oldGameControllerX || y != oldGameControllerY) && 
-            (buttons == null || buttons.length <= 1 || buttons[1] <= 0)
-    ) {
-      Dimension dim = ui.getTargetDimension();
-      int w = dim.getWidth();
-      int h = dim.getHeight();
-      //      x : width = deg : 180
-      int degX = x*180/w;
-      int degY = 180-(y*180/h);
-      String degs = formatDegrees(degX)+","+formatDegrees(degY);
-      sendToPort(degs);
-//      System.out.println("Sent "+degs);
-    }
-/*    if (buttons != null && buttons.length > 1) {
-      System.out.println(String.format("Button 1 has been pressed %d time(s).",buttons[1]));
-    }*/
-    oldGameControllerX = x;
-    oldGameControllerY = y;
-    try {
-      TimeUnit.MILLISECONDS.sleep(15l);
-    } catch (InterruptedException ex) {
-      logger.log(Level.SEVERE, null, ex);
-    }
-  }                                 
 
   /**
    * Gets the name of the selected serial port.
@@ -475,42 +429,6 @@ public class SixDOFArmController
       return false;
     }
     return comm.isConnected();
-  }
-
-  @Deprecated
-  @Override
-  public void moveLeft() {
-    sendToPort('L');
-  }
-
-  @Deprecated
-  @Override
-  public void moveRight() {
-    sendToPort('R');
-  }
-
-  @Deprecated
-  @Override
-  public void moveUp() {
-    sendToPort('U');
-  }
-
-  @Deprecated
-  @Override
-  public void moveDown() {
-    sendToPort('D');
-  }
-
-  @Deprecated
-  @Override
-  public void moveToFront() {
-    sendToPort("090,090");
-  }
-
-  @Deprecated
-  @Override
-  public void moveTo(int x, int y) {
-    sendToPort(String.format("%03d,%03d",x,y));
   }
 
   /**
@@ -693,10 +611,8 @@ public class SixDOFArmController
   /**
    * Moves the arm to the off position.
    */
-  @Deprecated
   @Override
   public void moveToOffPosition() {
-    sendToPort('O');
   }
 
   /**
@@ -705,7 +621,7 @@ public class SixDOFArmController
   @Override
   public void closeClamp() {
     sendToPort(Clamp.ACTION_CC);
-    Joint clamp = joints.get("clamp");
+//    Joint clamp = joints.get("clamp");
     ui.setClampAperturelPosition(Clamp.MAX);
   }
 
@@ -933,6 +849,10 @@ public class SixDOFArmController
 
   @Override
   public void analogActionPerformed(String component, float value) {
+    System.out.println(
+            "analogActionPerformed\t"
+                    +component+"\t"+value
+    );
     long millis = System.currentTimeMillis();
     if (
             isArmConnected() && 
@@ -990,6 +910,7 @@ public class SixDOFArmController
         System.out.println("z rotation.");
         int iValue = (int)((value+1.0f)*90.0f)-90;
         if (iValue >= -90 && iValue <= 90) {
+          this.rotateWrist(iValue);
 //          System.out.println(String.format("Analog\tWrist rotate\t%d", iValue));
         } else {
           System.out.println(
@@ -1006,11 +927,22 @@ public class SixDOFArmController
 
   @Override
   public void digitalActionPerformed(String component, boolean value) {
-  /*    System.out.println(
-              "Digital\t"
-                      +component+"\t"+(value ? "on" : "off")
-      );*/
-    if (isArmConnected() && useGameControllers) {
+    System.out.println(
+            "digitalActionPerformed\t"
+                    +component+"\t"+(value ? "on" : "off")
+    );
+    if (isArmConnected() && useGameControllers && component != null && value) {
+      if (component.compareTo("Button 0") == 0) {
+        openClamp();
+      } else if (component.compareTo("Button 1") == 0) {
+        closeClamp();
+      } else if (component.compareTo("Button 2") == 0) {
+      } else if (component.compareTo("Button 3") == 0) {
+      } else if (component.compareTo("Button 4") == 0) {
+      } else if (component.compareTo("Button 5") == 0) {
+      } else if (component.compareTo("Button 6") == 0) {
+      } else if (component.compareTo("Button 7") == 0) {
+      }
     }
   }
 
